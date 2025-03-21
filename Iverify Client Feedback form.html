@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Feedback Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            margin: 20px;
+            background-color: blue; /* Set background color to blue */
+        }
+        .survey-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .survey-header {
+            text-align: center;
+            position: relative;
+        }
+        .company-logo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            max-height: 50px;
+            max-width: 50px;
+        }
+        .survey-question {
+            margin: 20px 0;
+        }
+        .survey-question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .options-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .options-container label {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .thankyou-container {
+            display: none;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .thankyou-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        .thankyou-message {
+            font-size: 1.5em;
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container" id="surveyContainer">
+        <h1 class="survey-header">
+            Client Feedback Form
+            <img src="s.png" alt="Company Logo" class="company-logo">
+        </h1>    
+        <form id="surveyForm">
+            <div class="survey-question">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="survey-question">
+                <label for="satisfaction">How satisfied are you with our overall service?</label>
+                <div class="options-container">
+                    <label for="very-satisfied"><input type="radio" id="very-satisfied" name="satisfaction" value="Very Satisfied" required> Very Satisfied</label>
+                    <label for="satisfied"><input type="radio" id="satisfied" name="satisfaction" value="Satisfied" required> Satisfied</label>
+                    <label for="neutral"><input type="radio" id="neutral" name="satisfaction" value="Neutral" required> Neutral</label>
+                    <label for="dissatisfied"><input type="radio" id="dissatisfied" name="satisfaction" value="Dissatisfied" required> Dissatisfied</label>
+                    <label for="very-dissatisfied"><input type="radio" id="very-dissatisfied" name="satisfaction" value="Very Dissatisfied" required> Very Dissatisfied</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="communication">How would you rate our communication with you?</label>
+                <div class="options-container">
+                    <label for="excellent-comm"><input type="radio" id="excellent-comm" name="communication" value="Excellent" required> Excellent</label>
+                    <label for="good-comm"><input type="radio" id="good-comm" name="communication" value="Good" required> Good</label>
+                    <label for="average-comm"><input type="radio" id="average-comm" name="communication" value="Average" required> Average</label>
+                    <label for="poor-comm"><input type="radio" id="poor-comm" name="communication" value="Poor" required> Poor</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="quality">How would you rate the quality of our product?</label> <!-- Changed the question to "product" -->
+                <div class="options-container">
+                    <label for="excellent-quality"><input type="radio" id="excellent-quality" name="quality" value="Excellent" required> Excellent</label>
+                    <label for="good-quality"><input type="radio" id="good-quality" name="quality" value="Good" required> Good</label>
+                    <label for="average-quality"><input type="radio" id="average-quality" name="quality" value="Average" required> Average</label>
+                    <label for="poor-quality"><input type="radio" id="poor-quality" name="quality" value="Poor" required> Poor</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="timeliness">How would you rate our timeliness in delivering services?</label>
+                <div class="options-container">
+                    <label for="excellent-time"><input type="radio" id="excellent-time" name="timeliness" value="Excellent" required> Excellent</label>
+                    <label for="good-time"><input type="radio" id="good-time" name="timeliness" value="Good" required> Good</label>
+                    <label for="average-time"><input type="radio" id="average-time" name="timeliness" value="Average" required> Average</label>
+                    <label for="poor-time"><input type="radio" id="poor-time" name="timeliness" value="Poor" required> Poor</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="discrepancies">Did you find any discrepancies or inaccuracies in the reports?</label>
+                <div class="options-container">
+                    <label for="yes-discrepancies"><input type="radio" id="yes-discrepancies" name="discrepancies" value="Yes" required> Yes</label>
+                    <label for="no-discrepancies"><input type="radio" id="no-discrepancies" name="discrepancies" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="accuracy">How accurate and reliable do you find the information provided in our reports?</label>
+                <div class="options-container">
+                    <label for="very-accurate"><input type="radio" id="very-accurate" name="accuracy" value="Very Accurate" required> Very Accurate</label>
+                    <label for="accurate"><input type="radio" id="accurate" name="accuracy" value="Accurate" required> Accurate</label>
+                    <label for="moderately-accurate"><input type="radio" id="moderately-accurate" name="accuracy" value="Moderately Accurate" required> Moderately Accurate</label>
+                    <label for="inaccurate"><input type="radio" id="inaccurate" name="accuracy" value="Inaccurate" required> Inaccurate</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="tat">Were the reports delivered within the agreed-upon TAT (Turnaround Time)?</label>
+                <div class="options-container">
+                    <label for="yes-tat"><input type="radio" id="yes-tat" name="tat" value="Yes" required> Yes</label>
+                    <label for="no-tat"><input type="radio" id="no-tat" name="tat" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="support">Did our team provide timely and helpful support during the verification process?</label>
+                <div class="options-container">
+                    <label for="yes-support"><input type="radio" id="yes-support" name="support" value="Yes" required> Yes</label>
+                    <label for="no-support"><input type="radio" id="no-support" name="support" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="compliance">Do you feel we are compliant with all relevant laws and regulations?</label>
+                <div class="options-container">
+                    <label for="yes-compliance"><input type="radio" id="yes-compliance" name="compliance" value="Yes" required> Yes</label>
+                    <label for="no-compliance"><input type="radio" id="no-compliance" name="compliance" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="recommend">Would you recommend our company's Portal to others?</label>
+                <div class="options-container">
+                    <label for="definitely"><input type="radio" id="definitely" name="recommend" value="Definitely" required> Definitely</label>
+                    <label for="probably"><input type="radio" id="probably" name="recommend" value="Probably" required> Probably</label>
+                    <label for="not-sure"><input type="radio" id="not-sure" name="recommend" value="Not Sure" required> Not Sure</label>
+                    <label for="probably-not"><input type="radio" id="probably-not" name="recommend" value="Probably Not" required> Probably Not</label>
+                    <label for="definitely-not"><input type="radio" id="definitely-not" name="recommend" value="Definitely Not" required> Definitely Not</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="layout">Did you find the layout and design intuitive and user-friendly?</label>
+                <div class="options-container">
+                    <label for="yes-layout"><input type="radio" id="yes-layout" name="layout" value="Yes" required> Yes</label>
+                    <label for="no-layout"><input type="radio" id="no-layout" name="layout" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="features">Were there any features or functions that you found confusing or difficult to use in our portal?</label>
+                <div class="options-container">
+                    <label for="yes-features"><input type="radio" id="yes-features" name="features" value="Yes" required> Yes</label>
+                    <label for="no-features"><input type="radio" id="no-features" name="features" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="use-again">Would you use our portal again in the future?</label>
+                <div class="options-container">
+                    <label for="yes-use-again"><input type="radio" id="yes-use-again" name="use-again" value="Yes" required> Yes</label>
+                    <label for="no-use-again"><input type="radio" id="no-use-again" name="use-again" value="No" required> No</label>
+                </div>
+            </div>
+            <div class="survey-question">
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="4" cols="50"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+    <div id="thankyou" class="thankyou-container">
+        <img src="C:\Users\jhasm\OneDrive\Desktop\thank you.jpg" alt="Thank You" class="thankyou-image">
+        <p class="thankyou-message">Thank you for your feedback!</p>
+    </div>
+<script>
+    // Function to download data as a text file
+    function downloadData(data, filename) {
+        const textData = Object.entries(data).map(([key, value]) => `${key}: ${value}`).join('\n');
+        const blob = new Blob([textData], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
+    document.getElementById('surveyForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        const formData = new FormData(event.target);
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+
+        // Download data locally
+        downloadData(formObject, 'survey_responses.txt');
+
+        // Show thank you message
+        document.getElementById('surveyContainer').style.display = 'none';
+        document.getElementById('thankyou').style.display = 'block';
+    });
+</script>
+</body>
+</html>
